@@ -112,3 +112,35 @@ Cisco uses 4 minute timers by default.
 External Attribute LSAs were proposed as an alternative to iBGP to transport attribute info across an OSPF domain.  It was never widely deployed and is not supported on Cisco.
 
 Opaque LSAs carry info that may be used by OSPF or other applications such as MPLS-TE.
+
+
+## Area Types
+
+### Stub Area
+
+* No Type-4,5 LSAs
+
+Type-5 External LSAs are not sent, as this network has only connection in and out.  Type-4 is also unneeded
+
+#### Requirements for Routers
+* All must be set to Stub
+* No virtual links
+* No ASBRs within a Stub
+* Default Route via ABR(s)
+
+### Not-So-Stubby Area
+
+A stub area with the exception of having an ASBR.  It still does not have LSA-4,5 but instead uses Type-7, which is not sent among the AS.  The ABR will instead publish a normal Type-5 into the other areas, as usual.
+
+### Totally Stubby Area
+
+Further suppresses LSAs, the ABR stops sending Type-3 with the exception of a single default route into the area.  As such, only the ABRs need to be configured as Totally Stubby.  The other routers need only Stub Area configurations.
+
+
+## Demand Circuits
+
+OSPF can have defaults modified to suppress traffic over demand circuit or bandwidth-limited links.
+
+* RFC 1793 - Extending OSPF to Support Demand Circuits (1995)
+
+The enhancements mainly consist of suppressing hellos (which only works on P2P or P2MP) and not aging the LSAs.  Stable topologies have less flooding, though there is a presumption of reachability since the usual maintenance traffic is eliminated or reduced.
