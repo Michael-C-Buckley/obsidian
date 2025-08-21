@@ -93,17 +93,22 @@ Cisco uses 4 minute timers by default.
 
 ## LSAs
 
-| Type  | Description          |     |
-| ----- | -------------------- | --- |
-| 1     | Router               |     |
-| 2     | Network              |     |
-| 3     | Network Summary      |     |
-| 4     | ASBR Summary         |     |
-| 5     | AS External          |     |
-| ~~6~~ | ~~Group Membership~~ |     |
-| 7     | NSSA External        |     |
-| 8     | External Attributes  |     |
-| 9     | Opaque (Link-Local)  |     |
-| 10    | Opaque (Area Local)  |     |
-| 11    | Opaque (AS Scope)    |     |
+| Type  | Description          | Sender      | Info Summary                  |
+| ----- | -------------------- | ----------- | ----------------------------- |
+| 1     | Router               | All Routers | Links and their Info          |
+| 2     | Network              | DR          | Network and Attached Routers  |
+| 3     | Network Summary      | ABR         | Summaries to Other Areas      |
+| 4     | ASBR Summary         | ABR         | Route Info to ASBR            |
+| 5     | AS External          | ASBR        | External Route Info           |
+| ~~6~~ | ~~Group Membership~~ | -           | Deprecated Multicast          |
+| 7     | NSSA External        | ASBR        | External but scoped with NSSA |
+| 8     | External Attributes  | -           | ~~BGP attribute mechanism~~   |
+| 9     | Opaque (Link-Local)  |             |                               |
+| 10    | Opaque (Area Local)  |             |                               |
+| 11    | Opaque (AS Scope)    |             |                               |
 
+#### Facts
+
+External Attribute LSAs were proposed as an alternative to iBGP to transport attribute info across an OSPF domain.  It was never widely deployed and is not supported on Cisco.
+
+Opaque LSAs carry info that may be used by OSPF or other applications such as MPLS-TE.
