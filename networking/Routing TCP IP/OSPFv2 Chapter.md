@@ -163,3 +163,15 @@ The enhancements mainly consist of suppressing hellos (which only works on P2P o
 | 1      | Simple Password (Clear Text) |
 | 2      | Cryptographic (MD5) Checksum |
 
+### OSPF LSA Notes
+
+#### Type-1
+
+VEB are bits for Virtual-Link, External (ASBR), and Border (ABR)
+
+| Link Type | Description     |
+| --------- | --------------- |
+| 1         | P2P             |
+| 2         | Transit Network |
+| 3         | Stub Network    |
+| 4         | Virtual Link    |
