@@ -144,3 +144,22 @@ OSPF can have defaults modified to suppress traffic over demand circuit or bandw
 * RFC 1793 - Extending OSPF to Support Demand Circuits (1995)
 
 The enhancements mainly consist of suppressing hellos (which only works on P2P or P2MP) and not aging the LSAs.  Stable topologies have less flooding, though there is a presumption of reachability since the usual maintenance traffic is eliminated or reduced.
+
+### OSPF Packet Types
+
+| Type Code | Description                |
+| --------- | -------------------------- |
+| 1         | Hello                      |
+| 2         | DB Description             |
+| 3         | Link State Request         |
+| 4         | Link State Update          |
+| 5         | Link State Acknowledgement |
+
+#### Auth Types
+
+| AuType | Auth Type                    |
+| ------ | ---------------------------- |
+| 0      | Null (None)                  |
+| 1      | Simple Password (Clear Text) |
+| 2      | Cryptographic (MD5) Checksum |
+
